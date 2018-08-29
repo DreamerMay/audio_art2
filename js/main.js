@@ -30,7 +30,7 @@ let ellipseWidth = 10;
 
 
 function preload() {
-  song = loadSound('assets/the_depths.mp3');
+  song = loadSound('assets/flower-of-life.mp3');
 }
 
 // Setup starfield
@@ -49,6 +49,10 @@ function setup() {
   background(0);
   noStroke();
   frameRate(100);
+  // Pick colors randomly
+  r = random(255);
+  g = random(255);
+  b = random(255);
 
 
   // CANVAS SETUP
@@ -87,8 +91,9 @@ function setup() {
     }
   })
 
-
+  //============================
   // instantiate the particles
+  //============================
   for (var i = 0; i < particles.length; i++) {
     let x = map(i, 0, binCount, 0, width * 2);
     let y = random(0, height);
@@ -153,8 +158,6 @@ function draw()
       let volMic = mic.getLevel();
       rms = amplitude.getLevel();
       spectrum = fft.analyze(binCount);
-      console.log("rms", rms);
-      console.log("spectrum", spectrum);
 
       if (song.isPlaying())
       {
@@ -202,35 +205,36 @@ function draw()
       // =========================
       // Rectangle => Amplitude
       //===========================
-      noFill();
-      stroke('#fcf688');
+      push();
+        noFill();
+        stroke('#fcf688');
 
-      if (rms >= 0.15)
-      {
-        strokeWeight(2.5);
-        rect((windowWidth/2)-200, (windowHeight/2) - 50, 400, 200);
-      } if (rms >= 0.17)
-      {
-        strokeWeight(4);
-        rect((windowWidth/2)-250, (windowHeight/2) - 100, 500, 300);
-      } if (rms >= 0.2)
-      {
-        strokeWeight(6);
-        rect((windowWidth/2)-300, (windowHeight/2) - 150, 600, 400);
-      } if (rms >= 0.4)
-      {
-        strokeWeight(8);
-        rect((windowWidth/2)-350, (windowHeight/2) - 200, 700, 500);
-      } if (rms >= 0.5)
-      {
-        strokeWeight(12);
-        rect((windowWidth/2)-400, (windowHeight/2) - 250, 800, 600);
-      } if (rms >= 0.6)
-      {
-        strokeWeight(16);
-        rect((windowWidth/2)-450, (windowHeight/2) - 300, 900, 700);
-      }
-
+        if (rms >= 0.15)
+        {
+          strokeWeight(2.5);
+          rect((windowWidth/2)-200, (windowHeight/2) - 50, 400, 200);
+        } if (rms >= 0.17)
+        {
+          strokeWeight(4);
+          rect((windowWidth/2)-250, (windowHeight/2) - 100, 500, 300);
+        } if (rms >= 0.2)
+        {
+          strokeWeight(6);
+          rect((windowWidth/2)-300, (windowHeight/2) - 150, 600, 400);
+        } if (rms >= 0.4)
+        {
+          strokeWeight(8);
+          rect((windowWidth/2)-350, (windowHeight/2) - 200, 700, 500);
+        } if (rms >= 0.5)
+        {
+          strokeWeight(12);
+          rect((windowWidth/2)-400, (windowHeight/2) - 250, 800, 600);
+        } if (rms >= 0.6)
+        {
+          strokeWeight(16);
+          rect((windowWidth/2)-450, (windowHeight/2) - 300, 900, 700);
+        }
+        pop();
 
        //================
        // Peak detector - 4 side pink angle
@@ -388,21 +392,26 @@ function draw()
     // //==================
     //  // Particles
     //  //==================
-    //  for (var i = 0; i < binCount; i++) {
-    //    let thisLevel = map(spectrum[i], 0, 255, 0, 1);
-    //
-    //    particles[i].update(thisLevel);
-    //    particles[i].draw();
-    //    particles[i].position.x = map(i, 0, binCount, 0, width*2);
-    //  }
-    //
+
+
+    if (rms > 0.4 ) {
+       for (var i = 0; i < binCount; i++) {
+         let thisLevel = map(spectrum[i], 0, 255, 0, 1);
+
+         particles[i].update(thisLevel);
+         particles[i].draw();
+         particles[i].position.x = map(i, 0, binCount, 0, width*2);
+       } if (rms > 0.6) {
+         return;
+       }
+    }
 
     // ===============
     // Starfield Art
     // ===============
       push();
       translate(width/2, height/2);
-      speed = map(rms*3000, 0, width, 2, 20);
+      speed = map(rms*5000, 0, width, 2, 20);
       for (var i = 0; i < stars.length; i++) {
        stars[i].display();
        stars[i].update();
@@ -423,11 +432,12 @@ function draw()
 //=========================
 // Particle class
 
+
 let Particle = function(position) {
   this.position = position;
   this.scale = random(0, 1);
-  this.speed = createVector(0, random(0,10));
-  this.color = [153, 255, 255];
+  this.speed = createVector(0, random(0,100));
+  this.color = [random(0, 255), random(0,255), random(0,255)];
 }
 
 let theyExpand = 1;

@@ -4,6 +4,7 @@ body {
   color: #FF5D73;
   background-color: black;
   font-family: 'Monoton', cursive;
+  text-align: center;
 }
 
 .container {
@@ -21,7 +22,7 @@ h1 {
 div#p5_loading {
   font-size: 22px;
   color: hotpink;
-  margin-left: windowWidth/2;
+  padding-left: windowWidth/2;
 }
 
 #audio_canvas {
