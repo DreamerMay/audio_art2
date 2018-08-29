@@ -109,14 +109,31 @@ function setup() {
     this.y = random(-height, height);
     this.z = random(width);
 
+    this.display = function() {
+      noStroke();
+      fill(255);
+      let sx = map(this.x / this.z, 0, 1, 0, width);
+      let sy = map(this.y / this.z, 0, 1, 0, height);
+      let r = map(this.z, 0 , width, 12, 0);
+      ellipse(sx, sy, r, r);
+    } // disply
 
+    this.update = function() {
+      this.z -= speed;
 
+      if (this.z < 1) {
+        this.z = width;
+        this.x = random(-width, width);
+        this.y = random(-height, height);
+      }
+    } // update
+  } // Star
 
+  for (let i = 0; i < 800; i++) {
+    stars[i] = new Star();
   }
 
-
-
-}
+} // setup
 
 
 function draw()
@@ -127,8 +144,6 @@ function draw()
   noStroke();
   // console.log(frameCount);
 
-
-
   if (mic === undefined )
     {
       return;
@@ -138,6 +153,8 @@ function draw()
       let volMic = mic.getLevel();
       rms = amplitude.getLevel();
       spectrum = fft.analyze(binCount);
+      console.log("rms", rms);
+      console.log("spectrum", spectrum);
 
       if (song.isPlaying())
       {
@@ -327,14 +344,14 @@ function draw()
 
 
       //left beat rectangle
-      rect(350, height/2, 20, 200);
-      rect(300, height/2, 20, 300);
-      rect(250, height/2, 20, 400);
+      rect(250, height/2, 20, 200);
+      rect(200, height/2, 20, 300);
+      rect(150, height/2, 20, 400);
 
       //right beat rectangle
-      rect(width - 350, height/2, 20, 200);
-      rect(width - 300, height/2, 20, 300);
-      rect(width - 250, height/2, 20, 400);
+      rect(width - 250, height/2, 20, 200);
+      rect(width - 200, height/2, 20, 300);
+      rect(width - 150, height/2, 20, 400);
     }
     pop();
 
@@ -383,7 +400,13 @@ function draw()
     // ===============
     // Starfield Art
     // ===============
-
+      push();
+      translate(width/2, height/2);
+      speed = map(rms*3000, 0, width, 2, 20);
+      for (var i = 0; i < stars.length; i++) {
+       stars[i].display();
+       stars[i].update();
+     } // star
 
 
 
