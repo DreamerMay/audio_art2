@@ -25,7 +25,9 @@ div#p5_loading {
   padding-left: windowWidth/2;
 }
 
-#audio_canvas {
+div#audio_canvas {
+  width: 1920px;
+  height: 1120px;
   position: absolute;
   top: 0;
   left: 0;

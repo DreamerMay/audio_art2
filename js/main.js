@@ -392,7 +392,7 @@ function draw()
     // //==================
     //  // Particles
     //  //==================
-
+    noStroke();
 
     if (rms > 0.4 ) {
        for (var i = 0; i < binCount; i++) {
