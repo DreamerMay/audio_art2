@@ -17,38 +17,47 @@
 </head>
 <body>
 
-  <h1>Audio Art</h1>
-
-  <audio id="mic" src=""></audio>
-
-  <!-- <a class="mute" id="">Mute</a> -->
-
-  <div id="audio_canvas"></div>
-
-<!--
-  <form id="control">
+  <div class="container">
+    <header>
+      <h1>Audio Art</h1>
+    </header>
 
     <audio id="mic" src=""></audio>
 
-    <div id="mic_control">
-      <input type="button" id="microphone" value = "Microphone">
+    <!-- <div id="loading"><a id="load">Loading...</a></div> -->
+
+    <div id="audio_canvas"></div>
+
+    <div class="songControls">
+      <button id="microphone">Microphone</button>
+      <button id="play-stop">Play</button>
+    </div>
+
+  <!--
+    <form id="control">
+
+      <audio id="mic" src=""></audio>
+
+      <div id="mic_control">
+        <input type="button" id="microphone" value = "Microphone">
+        <br>
+        <a class="mute" id="">Mute</a>
+      </div>
+
       <br>
-      <a class="mute" id="">Mute</a>
-    </div>
 
-    <br>
+      <div id="audio_control">
+        <a class="audio_control" id="">Play</a>
+      </div>
 
-    <div id="audio_control">
-      <a class="audio_control" id="">Play</a>
-    </div>
+    </form> -->
 
-  </form> -->
-
-
+  </div>
 
 
   <script src= "js/jquery.js"></script>
   <script src= "js/main.js"></script>
+  <script src= "js/helperFunction.js"></script>
   <!-- <script src= "js/web_audio.js"></script> -->
 
 </body>
