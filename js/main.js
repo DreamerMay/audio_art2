@@ -162,8 +162,6 @@ function draw() {
       ellipse(width/3, height/2, 50+rms*300, 50+rms*300);
     }
 
-
-
     // FFT spectrum art
 
     beginShape();
