@@ -151,13 +151,14 @@ function draw()
   noStroke();
   // console.log(frameCount);
 
-  
+
 
   if (mic === undefined )
     {
       return;
     } else
   {
+
       // yellow circle for mic input
       let volMic = mic.getLevel();
       rms = amplitude.getLevel();
@@ -177,6 +178,7 @@ function draw()
         let eh = map(volMic*20, 0, 1, height, 0);
         ellipse(width/2, eh - 100, 50, 50);
         console.log(volMic);
+
       }
 
       // Threshold art (green)
@@ -215,30 +217,51 @@ function draw()
         noFill();
         stroke('#fcf688');
 
-        if (rms >= 0.15)
+
+        if (rms >= 0.8)
         {
-          strokeWeight(2.5);
-          rect((windowWidth/2)-200, (windowHeight/2) - 50, 400, 200);
-        } if (rms >= 0.17)
+          strokeWeight(1);
+          rect((windowWidth/2)-150, (windowHeight/2) - 50, 300, 100);
+        } if (rms >= 0.1)
+        {
+          strokeWeight(2);
+          rect((windowWidth/2)-175, (windowHeight/2) - 75, 350, 150);
+        } if (rms >= 0.15)
         {
           strokeWeight(4);
-          rect((windowWidth/2)-250, (windowHeight/2) - 100, 500, 300);
+          rect((windowWidth/2)-200, (windowHeight/2) - 100, 400, 200);
+        } if (rms >= 0.17)
+        {
+          strokeWeight(5);
+          rect((windowWidth/2)-225, (windowHeight/2) - 125, 450, 250);
         } if (rms >= 0.2)
         {
           strokeWeight(6);
-          rect((windowWidth/2)-300, (windowHeight/2) - 150, 600, 400);
-        } if (rms >= 0.4)
+          rect((windowWidth/2)-250, (windowHeight/2) - 150, 500, 300);
+        } if (rms >= 0.25)
         {
           strokeWeight(8);
-          rect((windowWidth/2)-350, (windowHeight/2) - 200, 700, 500);
-        } if (rms >= 0.5)
+          rect((windowWidth/2)-275, (windowHeight/2) - 175, 550, 350);
+        } if (rms >= 0.3)
+        {
+          strokeWeight(10);
+          rect((windowWidth/2)-300, (windowHeight/2) - 200, 600, 400);
+        } if (rms >= 0.35)
         {
           strokeWeight(12);
-          rect((windowWidth/2)-400, (windowHeight/2) - 250, 800, 600);
-        } if (rms >= 0.6)
+          rect((windowWidth/2)-325, (windowHeight/2) - 225, 650, 450);
+        } if (rms >= 0.4)
+        {
+          strokeWeight(14);
+          rect((windowWidth/2)-350, (windowHeight/2) - 250, 700, 500);
+        } if (rms >= 0.5)
         {
           strokeWeight(16);
-          rect((windowWidth/2)-450, (windowHeight/2) - 300, 900, 700);
+          rect((windowWidth/2)-450, (windowHeight/2) - 300, 750, 550);
+        } if (rms >= 0.6)
+        {
+          strokeWeight(17);
+          rect((windowWidth/2)-500, (windowHeight/2) - 350, 800, 600);
         }
         pop();
 
@@ -296,7 +319,7 @@ function draw()
 
 
 
-    if (rms > 0.01)
+    if (rms > 0.1)
     {
       // distort the rectable based on amp
       let distortDiam = map(rms, 0, 1, 0, 1200);
