@@ -230,12 +230,12 @@ function draw()
         if (rms >= 0.3)
         {
           stroke('#FFF000');
-          strokeWeight(2);
+          strokeWeight(3);
           rect((windowWidth/2)-150, (windowHeight/2) - 50, 300, 100);
         } if (rms >= 0.1)
         {
           stroke('#FFE800');
-          strokeWeight(3);
+          strokeWeight(3.5);
           rect((windowWidth/2)-175, (windowHeight/2) - 75, 350, 150);
         } if (rms >= 0.15)
         {
