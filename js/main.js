@@ -7,8 +7,6 @@ console.log("Audio_art2");
 let button, canvas;
 let song, mic, currentSource, amplitude, rms, spectrum, volMic, fft;
 
-
-
 // Beat Detect
 let beatHoldFrames = 30;
 let beatThreshold = 0.11;
@@ -30,7 +28,7 @@ let ellipseWidth = 10;
 
 
 function preload() {
-  song = loadSound('assets/the_depths.mp3');
+  song = loadSound('assets/flower-of-life.mp3');
 }
 
 // Setup starfield
@@ -153,6 +151,8 @@ function draw()
   noStroke();
   // console.log(frameCount);
 
+  
+
   if (mic === undefined )
     {
       return;
@@ -162,6 +162,7 @@ function draw()
       let volMic = mic.getLevel();
       rms = amplitude.getLevel();
       spectrum = fft.analyze(binCount);
+
 
       if (song.isPlaying())
       {
@@ -175,6 +176,7 @@ function draw()
         // Draw an ellipse with height based on volume
         let eh = map(volMic*20, 0, 1, height, 0);
         ellipse(width/2, eh - 100, 50, 50);
+        console.log(volMic);
       }
 
       // Threshold art (green)
@@ -280,49 +282,6 @@ function draw()
 
 
 
-    // // ========================
-    // // Beat detector art // remove for now.
-    // // ========================
-    //
-    // // Beat rectangle parameters
-    // let rectRotate = true;
-    // let rectMin = 15;
-    // let rectOffset = 10;
-    // let numRects = 5;
-    //
-    // detectBeat(rms);
-    // // rectMode(CENTER);
-    // fill('#42fc96');
-    // noStroke();
-    //
-    // if (rms > 0.01) {
-    //   // distort the rectable based on amp
-    //   let distortDiam = map(rms, 0, 1, 0, 1200);
-    //   let w = rectMin;
-    //   let h = rectMin;
-    //
-    //   //distortion direction shift each beat
-    //   // if (rectRotate) {
-    //   //   var rotation = PI / 2;
-    //   // // } else {
-    //   // //   var rotation = PI / 2;
-    //   // }
-    //
-    //   let rectCenter = createVector(width/3, height/2);
-    //   push();
-    //     // draw the rectangles
-    //     for (var i = 0; i < numRects; i++) {
-    //       let x = rectCenter.y - distortDiam/2 ; // - move left; + move right
-    //       let y = rectCenter.x + rectOffset * i ;
-    //       // rotate around the center of this rectangle
-    //       translate(x, y);
-    //       // rotate(rotation);
-    //       rect(0, 0, rectMin, rectMin + distortDiam);
-    //     }
-    //   pop();
-    //
-    // }
-
     //======================
     // My Beat Detector Art
     //======================
@@ -353,10 +312,9 @@ function draw()
         fill('#42fc96');
         noStroke();
         // Beat Rectable left
-        for (let i = 0; i < 1; i++) {
+        for (let i = 0; i < 5; i++) {
           let x = rectCenterPostLeft.x - distortDiam/2;
           let y = rectCenterPostLeft.y + rectOffset * i;
-          // console.log("distortDiam:", distortDiam);
 
           // Beat Rectable right
           let a = rectCenterPostRight.x + distortDiam/2;
@@ -366,12 +324,28 @@ function draw()
           // Beat Reactangle Left
           push();
             translate(x, y);
-            rect(0, 0, rectMin, rectMin  + distortDiam );
+            rect(0, 0, rectMin, rectMin + distortDiam );
+          pop();
+          push();
+            translate(x-50, y);
+            rect(0, 0, rectMin, rectMin + distortDiam + 50 );
+          pop();
+          push();
+            translate(x-100, y);
+            rect(0, 0, rectMin, rectMin + distortDiam + 100 );
           pop();
           // Beat Rectangle Right
           push()
             translate(a, b);
-            rect(0, 0, rectMin, rectMin  + distortDiam );
+            rect(0, 0, rectMin, rectMin  + distortDiam);
+          pop();
+          push()
+            translate(a + 50, b);
+            rect(0, 0, rectMin, rectMin  + distortDiam + 50 );
+          pop();
+          push()
+            translate(a + 100, b);
+            rect(0, 0, rectMin, rectMin  + distortDiam + 100);
           pop();
 
         }
