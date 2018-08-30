@@ -183,8 +183,12 @@ function draw()
         fill(255, 204, 0);
         stroke('red');
         // Draw an ellipse with height based on volume
-        let eh = map(volMic*20, 0, 1, height, 0);
-        ellipse(width/2, eh - 100, 50, 50);
+        let eh1 = map(volMic*10, 0, 1, height, 0);
+        ellipse(width/3, eh1 - 100, 50, 50);
+        let eh2 = map(volMic*5, 0, 1, height, 0);
+        ellipse(width/2, eh2 - 100, 50, 50);
+        let eh3 = map(volMic*15, 0, 1, height, 0);
+        ellipse(width -(width/3), eh3 - 100, 50, 50);
         console.log(volMic);
           $("#microphone").fadeIn("slow");
           $("#play-stop").fadeIn("slow");
@@ -228,57 +232,57 @@ function draw()
 
         if (rms >= 0.3)
         {
-          stroke('#FFF000');
+          stroke('#F7FD33');
           strokeWeight(3);
           rect((windowWidth/2)-150, (windowHeight/2) - 50, 300, 100);
         } if (rms >= 0.1)
         {
-          stroke('#FFE800');
+          stroke('#FDE633');
           strokeWeight(3.5);
           rect((windowWidth/2)-175, (windowHeight/2) - 75, 350, 150);
         } if (rms >= 0.15)
         {
-          stroke('#FFD500');
+          stroke('#FDD333');
           strokeWeight(4);
           rect((windowWidth/2)-200, (windowHeight/2) - 100, 400, 200);
         } if (rms >= 0.17)
         {
-          stroke('#FFCD00');
+          stroke('#FDBC33');
           strokeWeight(5);
           rect((windowWidth/2)-225, (windowHeight/2) - 125, 450, 250);
         } if (rms >= 0.2)
         {
-          stroke('#FFB200');
+          stroke('#FDAB33');
           strokeWeight(6);
           rect((windowWidth/2)-250, (windowHeight/2) - 150, 500, 300);
         } if (rms >= 0.25)
         {
-          stroke('#FF9700');
+          stroke('#FD8F33');
           strokeWeight(8);
           rect((windowWidth/2)-275, (windowHeight/2) - 175, 550, 350);
         } if (rms >= 0.3)
         {
-          stroke('#FF8700');
+          stroke('#FD7933');
           strokeWeight(10);
           rect((windowWidth/2)-300, (windowHeight/2) - 200, 600, 400);
         } if (rms >= 0.35)
         {
-          stroke('#FF7400');
+          stroke('#FD6533');
           strokeWeight(12);
           rect((windowWidth/2)-325, (windowHeight/2) - 225, 650, 450);
         } if (rms >= 0.4)
         {
-          stroke('#FF5D00');
+          stroke('#FD5433');
           strokeWeight(14);
           rect((windowWidth/2)-350, (windowHeight/2) - 250, 700, 500);
         } if (rms >= 0.5)
         {
-          stroke('#FF4200');
+          stroke('#FD3333');
           strokeWeight(16);
           rect((windowWidth/2)-375, (windowHeight/2) - 275, 750, 550);
         } if (rms >= 0.6)
         {
-          stroke('#FF1F00');
+          stroke('#FC000A');
           strokeWeight(17);
           rect((windowWidth/2)-400, (windowHeight/2) - 300, 800, 600);
         }
@@ -336,8 +340,6 @@ function draw()
     // let numRects = 5;
 
     detectBeat(rms);
-
-
 
     if (rms > 0.1)
     {

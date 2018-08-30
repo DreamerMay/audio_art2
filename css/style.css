@@ -67,6 +67,11 @@ div#audio_canvas {
 
 img {
   padding: 2vw;
+  cursor: pointer;
+}
+
+img:active {
+  transform: translateY(4px);
 }
 
 /* a {
