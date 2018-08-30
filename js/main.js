@@ -28,7 +28,7 @@ let ellipseWidth = 10;
 
 
 function preload() {
-  song = loadSound('assets/Lacrimosa.mp3');
+  song = loadSound('assets/flower-of-life.mp3');
 }
 
 // Setup starfield
