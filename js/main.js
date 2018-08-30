@@ -35,8 +35,6 @@ function preload() {
 let stars = [];
 let speed;
 
-
-
 //=========================
 // AUDIO & CANVAS SETUP
 //=========================
@@ -78,9 +76,9 @@ function setup() {
     console.log('mic activate');
   })
 
-  $('#play-stop').click(function() {
+  $('#play').click(function() {
     $("#microphone").fadeOut("slow");
-    $("#play-stop").fadeOut("slow");
+    $("#play").fadeOut("slow");
 
     mic = new p5.AudioIn();
     mic.start();
