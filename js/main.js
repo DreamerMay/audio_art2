@@ -161,7 +161,6 @@ function draw()
   // console.log(frameCount);
 
 
-
   if (mic === undefined )
     {
       return;
@@ -296,9 +295,10 @@ function draw()
          fill('#FF0651');
          noStroke()
          quad(width - 450, 260, width - 490, 220, width, -100, width, 100); //top right
-         quad(370, 260, 400, 220, -100, -100, -100, 100); // top left **
-         quad(400, 740, 370, 700, -100, 820, -100, 1000); // bottom left
-         quad(width - 490, 740, width - 450, 700, width, 820, width, 1000); // bottom right  **
+         quad(370, 260, 400, 220, -100, -100, -100, 100); // top left
+         quad(400, height - 210, 370, height - 250, -100, height -90, 40, height + 100); // bottom left
+         quad(width - 490, height - 210, width - 450, height - 250, width, height -90, width, height + 100); // bottom right  **
+
        }
 
     // //======================
