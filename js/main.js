@@ -188,8 +188,8 @@ function draw()
         let eh3 = map(volMic*15, 0, 1, height, 0);
         ellipse(width -(width/3), eh3 - 100, 50, 50);
         console.log(volMic);
-          $("#microphone").fadeIn("slow");
-          $("#play-stop").fadeIn("slow");
+          $("#microphone").fadeIn("3000");
+          $("#play").fadeIn("3000");
 
       }
 
@@ -280,7 +280,7 @@ function draw()
           rect((windowWidth/2)-375, (windowHeight/2) - 275, 750, 550);
         } if (rms >= 0.6)
         {
-          stroke('#FC000A');
+          stroke('#FF0000');
           strokeWeight(17);
           rect((windowWidth/2)-400, (windowHeight/2) - 300, 800, 600);
         }
