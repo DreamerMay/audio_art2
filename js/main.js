@@ -181,14 +181,12 @@ function draw()
         fill(255, 204, 0);
         stroke('red');
         // Draw an ellipse with height based on volume
-        let eh1 = map(volMic*10, 0, 1, height, 0);
-        ellipse(width/3, eh1 - 100, 50, 50);
-        let eh2 = map(volMic*5, 0, 1, height, 0);
-        ellipse(width/2, eh2 - 100, 50, 50);
-        let eh3 = map(volMic*15, 0, 1, height, 0);
-        ellipse(width -(width/3), eh3 - 100, 50, 50);
+
+        let eh = map(volMic*5, 0, 1, height, 0);
+        ellipse(width/2, eh - 100, 50, 50);
+
         console.log(volMic);
-          $("#microphone").fadeIn("3000");
+          $("#microphone").fadeIn("300");
           $("#play").fadeIn("3000");
 
       }
