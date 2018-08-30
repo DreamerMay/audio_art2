@@ -5,7 +5,7 @@ console.log("Audio_art2");
 //=========================
 
 let button, canvas;
-let song, mic, currentSource, amplitude, rms, spectrum, volMic, fft;
+let song, mic, amplitude, rms, spectrum, volMic, fft;
 
 // Beat Detect
 let beatHoldFrames = 30;
@@ -28,7 +28,7 @@ let ellipseWidth = 10;
 
 
 function preload() {
-  song = loadSound('assets/flower-of-life.mp3');
+  song = loadSound('assets/Lacrimosa.mp3');
 }
 
 // Setup starfield
@@ -74,11 +74,14 @@ function setup() {
     // MIC SETUP
     mic = new p5.AudioIn();
     mic.start();
+
     console.log('mic activate');
-    // clearCanvas();
   })
 
   $('#play-stop').click(function() {
+    $("#microphone").fadeOut("slow");
+    $("#play-stop").fadeOut("slow");
+
     mic = new p5.AudioIn();
     mic.start();
     console.log('mic activate');
@@ -92,6 +95,12 @@ function setup() {
       console.log('play song');
     }
   })
+
+  // if (song.isPlaying() && rms === 0) {
+  //   $("#microphone").fadeIn("slow");
+  //   $("#play-stop").fadeIn("slow");
+  // };
+
 
   //============================
   // Instantiate the particles
@@ -178,6 +187,8 @@ function draw()
         let eh = map(volMic*20, 0, 1, height, 0);
         ellipse(width/2, eh - 100, 50, 50);
         console.log(volMic);
+          $("#microphone").fadeIn("slow");
+          $("#play-stop").fadeIn("slow");
 
       }
 
@@ -215,53 +226,62 @@ function draw()
       //===========================
       push();
         noFill();
-        stroke('#fcf688');
 
-
-        if (rms >= 0.8)
+        if (rms >= 0.3)
         {
-          strokeWeight(1);
+          stroke('#FFF000');
+          strokeWeight(2);
           rect((windowWidth/2)-150, (windowHeight/2) - 50, 300, 100);
         } if (rms >= 0.1)
         {
-          strokeWeight(2);
+          stroke('#FFE800');
+          strokeWeight(3);
           rect((windowWidth/2)-175, (windowHeight/2) - 75, 350, 150);
         } if (rms >= 0.15)
         {
+          stroke('#FFD500');
           strokeWeight(4);
           rect((windowWidth/2)-200, (windowHeight/2) - 100, 400, 200);
         } if (rms >= 0.17)
         {
+          stroke('#FFCD00');
           strokeWeight(5);
           rect((windowWidth/2)-225, (windowHeight/2) - 125, 450, 250);
         } if (rms >= 0.2)
         {
+          stroke('#FFB200');
           strokeWeight(6);
           rect((windowWidth/2)-250, (windowHeight/2) - 150, 500, 300);
         } if (rms >= 0.25)
         {
+          stroke('#FF9700');
           strokeWeight(8);
           rect((windowWidth/2)-275, (windowHeight/2) - 175, 550, 350);
         } if (rms >= 0.3)
         {
+          stroke('#FF8700');
           strokeWeight(10);
           rect((windowWidth/2)-300, (windowHeight/2) - 200, 600, 400);
         } if (rms >= 0.35)
         {
+          stroke('#FF7400');
           strokeWeight(12);
           rect((windowWidth/2)-325, (windowHeight/2) - 225, 650, 450);
         } if (rms >= 0.4)
         {
+          stroke('#FF5D00');
           strokeWeight(14);
           rect((windowWidth/2)-350, (windowHeight/2) - 250, 700, 500);
         } if (rms >= 0.5)
         {
+          stroke('#FF4200');
           strokeWeight(16);
-          rect((windowWidth/2)-450, (windowHeight/2) - 300, 750, 550);
+          rect((windowWidth/2)-375, (windowHeight/2) - 275, 750, 550);
         } if (rms >= 0.6)
         {
+          stroke('#FF1F00');
           strokeWeight(17);
-          rect((windowWidth/2)-500, (windowHeight/2) - 350, 800, 600);
+          rect((windowWidth/2)-400, (windowHeight/2) - 300, 800, 600);
         }
         pop();
 

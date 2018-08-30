@@ -1,7 +1,9 @@
-//===============
-// Clear Canvas
+// //===============
+// // Clear Canvas
+//
+// const clearCanvas = function() {
+//   clear();
+//   background(0);
+// }
 
-const clearCanvas = function() {
-  clear();
-  background(0);
-}
+ß

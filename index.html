@@ -6,7 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Audio Art 2</title>
   <link rel="stylesheet" href="css/style.css">
-  <style>@import url('https://fonts.googleapis.com/css?family=Cabin|Monoton|Paytone+One');</style>
+  <style>@import url('https://fonts.googleapis.com/css?family=Cabin|Monoton|Paytone+One|Aldrich|Cabin+Sketch');</style>
+
   <script src= "p5/p5.js"></script>
   <script src= "p5/addons/p5.dom.js"></script>
   <script src= "p5/addons/p5.sound.js"></script>
@@ -24,36 +25,15 @@
     </header>
 
     <audio id="mic" src=""></audio>
-
-    <!-- <div id="loading"><a id="load">Loading...</a></div> -->
-
     <div id="audio_canvas"></div>
 
+
+
     <div class="songControls">
-      <button id="microphone">Microphone</button>
-      <button id="play-stop">Play</button>
+        <a><img src="./assets/Mic.png" alt="Microphone" id="microphone" class="fas fa-microphone" width="100" height="100"></a>
+
+        <i><img src="/assets/play1.png" alt="Play-Stop" id="play-stop" class="fas fa-play" width="100" height="100"></i>
     </div>
-
-  <!--
-    <form id="control">
-
-      <audio id="mic" src=""></audio>
-
-      <div id="mic_control">
-        <input type="button" id="microphone" value = "Microphone">
-        <br>
-        <a class="mute" id="">Mute</a>
-      </div>
-
-      <br>
-
-      <div id="audio_control">
-        <a class="audio_control" id="">Play</a>
-      </div>
-
-    </form> -->
-
-  </div>
 
 
   <script src= "js/jquery.js"></script>

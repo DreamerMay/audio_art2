@@ -1,7 +1,10 @@
+/* font-family: 'Aldrich', sans-serif;
+font-family: 'Cabin Sketch', cursive; */
+
 body {
   padding: 0;
   margin: 0;
-  color: #FF5D73;
+  color: white;
   background-color: black;
   font-family: 'Monoton', cursive;
   text-align: center;
@@ -16,14 +19,36 @@ body {
 h1 {
   font-family: 'Monoton', cursive;
   font-size: 3em;
+  color: #FF5D73;
 }
 
-  /* TODO: appear loading and center, currently invisible */
-div#p5_loading {
-  font-size: 22px;
-  color: hotpink;
-  padding-left: windowWidth/2;
+
+#p5_loading, #load {
+  color: #FF5D73;
+  font-size: 50px;
+  text-align: center;
+  font-family: 'Cabin Sketch', cursive;
+  line-height: 40vw;
+  margin-left: 45vw;
+  max-width: 300px;
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  border-right: .15em solid #FF5D73; /* The typwriter cursor */
+  white-space: nowrap; /* Keeps the content on a single line */
+  animation:
+  typing 6s steps(100, end),
+  blink-caret .90s step-end infinite;
 }
+/* The typing effect */
+@keyframes typing { /*@keyframes rule specifies animation code*/
+  from { width: 0 }
+  to { width: 100% }
+}
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: black; }
+}
+
 
 div#audio_canvas {
   width: 1920px;
@@ -36,13 +61,15 @@ div#audio_canvas {
   z-index: -1;
 }
 
-#control {
-  /* margin-top: 300px; */
-  /* display: inline-flex; */
+.songControls {
+  margin-bottom: 0;
 }
 
+img {
+  padding: 2vw;
+}
 
-a {
+/* a {
   background-color: white;
   color: black;
   text-align: center;
@@ -52,4 +79,4 @@ a {
   width: 100px;
   font-size: 1em;
   display: block;
-}
+} */
