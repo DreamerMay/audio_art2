@@ -30,7 +30,7 @@ let ellipseWidth = 10;
 
 
 function preload() {
-  song = loadSound('assets/flower-of-life.mp3');
+  song = loadSound('assets/the_depths.mp3');
 }
 
 // Setup starfield
@@ -81,6 +81,10 @@ function setup() {
   })
 
   $('#play-stop').click(function() {
+    mic = new p5.AudioIn();
+    mic.start();
+    console.log('mic activate');
+
     if (song.isPlaying()) {
       song.pause();
       console.log('pause song');
@@ -92,7 +96,7 @@ function setup() {
   })
 
   //============================
-  // instantiate the particles
+  // Instantiate the particles
   //============================
   for (var i = 0; i < particles.length; i++) {
     let x = map(i, 0, binCount, 0, width * 2);
@@ -163,14 +167,14 @@ function draw()
       {
         fill(0);
         stroke(0)
-        console.log(rms);
+        console.log("rms:",rms);
       } else
       {
         fill(255, 204, 0);
         stroke('red');
         // Draw an ellipse with height based on volume
         let eh = map(volMic*20, 0, 1, height, 0);
-        ellipse(width*(2/3), eh - 100, 50, 50);
+        ellipse(width/2, eh - 100, 50, 50);
       }
 
       // Threshold art (green)
@@ -252,14 +256,15 @@ function draw()
          quad(width - 490, 740, width - 450, 700, width, 820, width, 1000); // bottom right  **
        }
 
-
-    // // art for amplitude (pink)
+    // //======================
+    // // Art for amplitude circle(pink)
     // if (rms > 0.01) {
     //   fill('#fae');
     //   stroke(255);
     //   ellipse(width/3, height/2, 50+rms*300, 50+rms*300);
     // }
     //
+    // //==========================
     // // FFT spectrum art
     //
     // beginShape();
@@ -324,13 +329,13 @@ function draw()
 
     // Beat rectangle parameters
     let rectRotate = true;
-    let rectMin = 15;
+    let rectMin = 12;
     let rectOffset = 10;
     // let numRects = 5;
 
     detectBeat(rms);
 
-    push();
+
 
     if (rms > 0.01)
     {
@@ -339,25 +344,41 @@ function draw()
       let w = rectMin;
       let h = rectMin;
 
-      rectMode(CENTER);
+      let rectCenterPostLeft = createVector(width/4, height/2);
+      let rectCenterPostRight = createVector(width - (width/4), height/2);
 
-      fill('#42fc96');
-      noStroke();
-
-
+      push();
 
 
-      //left beat rectangle
-      rect(250, height/2, 20, 200);
-      rect(200, height/2, 20, 300);
-      rect(150, height/2, 20, 400);
+        fill('#42fc96');
+        noStroke();
+        // Beat Rectable left
+        for (let i = 0; i < 1; i++) {
+          let x = rectCenterPostLeft.x - distortDiam/2;
+          let y = rectCenterPostLeft.y + rectOffset * i;
+          // console.log("distortDiam:", distortDiam);
 
-      //right beat rectangle
-      rect(width - 250, height/2, 20, 200);
-      rect(width - 200, height/2, 20, 300);
-      rect(width - 150, height/2, 20, 400);
+          // Beat Rectable right
+          let a = rectCenterPostRight.x + distortDiam/2;
+          let b = rectCenterPostRight.y + rectOffset * i;
+
+          rectMode(CENTER);
+          // Beat Reactangle Left
+          push();
+            translate(x, y);
+            rect(0, 0, rectMin, rectMin  + distortDiam );
+          pop();
+          // Beat Rectangle Right
+          push()
+            translate(a, b);
+            rect(0, 0, rectMin, rectMin  + distortDiam );
+          pop();
+
+        }
+
+      pop();
     }
-    pop();
+
 
 
     //=========================
