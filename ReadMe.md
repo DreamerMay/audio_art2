@@ -1,25 +1,50 @@
-### Direct Link for Demo
-https://www.sherinefoo.com/audio_art2/
+# PROJECT #3: Audio Art
+[link to live site](https://www.sherinefoo.com/audio_art2/)
 
-##Detect BMP
+## Audio Art
+A site that generate visual art show by abstracting data from audio input. User can join the fun by making some loud sound near the mic.
+
+## Inspiration of this project
+I have a vision of creating a charity project combining music and least fortunate kids to create a music show. As you know music change a person mood, my goal is to help those kids express their feelings through music. Before I can achieve that, this is where the music project starts.
+
+## How to use
+* Two option of input. Microphone or Audio (preloaded in the site)
+* Click microphone button for microphone input
+* Click play button to start the show :)
+* Button will appear again when the song is done
+* If you want to stop the music, just refresh the page (for now)
 
 
-filtering the audio, in this example with a low-pass filter
-calculating peaks using a threshold
-grouping interval counts and then tempo counts
-For the threshold I used an arbitrary value of .98 of the range between maximum and minimum values; when grouping I added some additional checks and arbitrary rounding to avoid possible infinite loops and make it an easy-to-debug sample.
+## Objectives
+* Create an AWESOME show with music input
+* Abstract data from audio to create the visual effects
+* Data that abstract for this project :
+    1. Microphone amplitude
+    2. Threshold of Microphone
+    3. Spectrum from FFT (Fast Fourier Transform)
+    4. Peak detection
+    5. Beat detection
+* Visual effect include :
+    1. Box in the middle changes with the amplitude level of the audio
+    2. Green rectangular on both side changes based on beat detection
+    3. Quad rectangular shape on each corner appear when peak of the audio is detected
+    4. Particles will appear only when certain level of amplitude
+    5. Starfield move towards the screen. The speed of the stars are based on the amplitude
 
-Note that commenting is scarce to keep the sample implementation brief because:
+## Technologies
+* P5.js
+* Javascript
+* jQuery
+* HTML & CSS
 
-the logic behind processing is explained in the referenced article
-the syntax can be referenced in the API docs of the related methods
+## To Do :
+- [ ] Add time setting when specific visual effect should show
+- [ ] Add partical circle around in the middle of the screen based on amplitude of audio
+- [ ] Add SoundCloud API
+- [ ] Add more song and user able to toggle or change song
+- [ ] Add stop song function to stop the song anytime user desired
+- [ ] Add credit
 
-
-## Adding soundcloud :
-https://codepen.io/DonKarlssonSan/post/fun-with-web-audio-api
-
-# run local drive to test avoice music error use in terminal
- python -m SimpleHTTPServer
-
- P5.js example:
- https://p5js.org/examples/input-storing-input.html
+### My Notes
+* To run it on local, input this code in terminal `python -m SimpleHTTPServer`
+* https://codepen.io/DonKarlssonSan/post/fun-with-web-audio-api

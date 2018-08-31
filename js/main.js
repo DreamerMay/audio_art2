@@ -1,4 +1,4 @@
-console.log("Audio_art2");
+console.log("Welcome to Audio Art");
 
 //=========================
 // Global varables
@@ -36,9 +36,8 @@ let stars = [];
 let speed;
 
 //=========================
-// AUDIO & CANVAS SETUP
+// Audio & Canvas Setup
 //=========================
-
 
 function setup() {
   canvas = createCanvas(windowWidth, windowHeight);
@@ -50,14 +49,17 @@ function setup() {
   g = random(255);
   b = random(255);
 
-
-  // CANVAS SETUP
+  //=========================
+  // Canvas Setup
+  //=========================
   canvas.parent('audio_canvas');
   width = windowWidth;
   height = windowHeight;
   width < height ? smlAxis = width : smlAxis = height;
 
-  // AUDIO DATA SETUP
+  //=========================
+  // Audio Data Setup
+  //=========================
   amplitude = new p5.Amplitude();
   amplitude.setInput(song);
   amplitude.smooth(0.9);
@@ -65,9 +67,9 @@ function setup() {
   fft = new p5.FFT(smoothing, binCount);
   fft.setInput(song);
 
-  //===============
-  // USER CONTROL
-
+  //=========================
+  // User Controller
+  //=========================
   $('#microphone').click(function() {
     // MIC SETUP
     mic = new p5.AudioIn();
@@ -94,11 +96,6 @@ function setup() {
     }
   })
 
-  // if (song.isPlaying() && rms === 0) {
-  //   $("#microphone").fadeIn("slow");
-  //   $("#play-stop").fadeIn("slow");
-  // };
-
 
   //============================
   // Instantiate the particles
@@ -110,14 +107,14 @@ function setup() {
     particles[i] = new Particle(position);
   }
 
-  //================
+  //=================
   // Peak detector
   //=================
   peakDetect = new p5.PeakDetect(4000, 12000, 0.2);
 
   //=================
   // Starfield
-  //================
+  //=================
   function Star() {
     this.x = random(-width, width);
     this.y = random(-height, height);
@@ -156,20 +153,16 @@ function draw()
   height = windowHeight;
   background(0);
   noStroke();
-  // console.log(frameCount);
-
 
   if (mic === undefined )
     {
       return;
     } else
   {
-
       // yellow circle for mic input
       let volMic = mic.getLevel();
       rms = amplitude.getLevel();
       spectrum = fft.analyze(binCount);
-
 
       if (song.isPlaying())
       {
@@ -181,43 +174,22 @@ function draw()
         fill(255, 204, 0);
         stroke('red');
         // Draw an ellipse with height based on volume
-
         let eh = map(volMic*5, 0, 1, height, 0);
         ellipse(width/2, eh - 100, 50, 50);
 
         console.log(volMic);
           $("#microphone").fadeIn("300");
           $("#play").fadeIn("3000");
-
       }
 
       // Threshold art (green)
       let volThreshold = 0.2;
-      // console.log(rms);
       if (volMic > volThreshold)
       {
         stroke('#44a8ff');
         fill('#44a8ff');
         rect(random(40, width), random(height), volMic*500, volMic*500);
       }
-
-      //==================
-      // Threshold long line on the side
-      //=============
-      // let yt = map(vol, 0, 1, height, 0);
-      // let ythreshold = map(volThreshold, 0, 1, height, 0);
-      //
-      // noStroke();
-      // fill(255);
-      // rect(0,0, 20, height);
-      //
-      // fill(255);
-      // rect(0, yt, 20, yt);
-      // stroke(255);
-      // line(0, ythreshold, 19, ythreshold);
-
-
-
     if (song.isPlaying())
     {
       // =========================
@@ -284,9 +256,9 @@ function draw()
         }
         pop();
 
-       //================
+       //===================================
        // Peak detector - 4 side pink angle
-       //================
+       //===================================
        fft.analyze();
        peakDetect.update(fft);
 
@@ -300,30 +272,6 @@ function draw()
          quad(width - 490, height - 210, width - 450, height - 250, width, height -90, width, height + 100); // bottom right  **
 
        }
-
-    // //======================
-    // // Art for amplitude circle(pink)
-    // if (rms > 0.01) {
-    //   fill('#fae');
-    //   stroke(255);
-    //   ellipse(width/3, height/2, 50+rms*300, 50+rms*300);
-    // }
-    //
-    // //==========================
-    // // FFT spectrum art
-    //
-    // beginShape();
-    //
-    // fill('rgba(255,93,115,1)');
-    // stroke('rgba(50,50,50,1)');
-    // strokeWeight(1);
-    // for (let i = 0; i < spectrum.length; i++) {
-    //   vertex(i, map(spectrum[i], 0, 255, height, 0) );
-    // }
-    // endShape();
-    //
-
-
 
     //======================
     // My Beat Detector Art
@@ -394,11 +342,9 @@ function draw()
       pop();
     }
 
-
-
-    //=========================
+    //=================
     // BPM detector
-    //=========================
+    //=================
     function detectBeat(level)
     {
       if (level > beatCutoff && level > beatThreshold)
@@ -425,9 +371,9 @@ function draw()
       rectRotate = !rectRotate;
     }
 
-    // //==================
-    //  // Particles
-    //  //==================
+    //==================
+    // Particles
+    //==================
     noStroke();
 
     if (rms > 0.4 ) {
@@ -452,22 +398,13 @@ function draw()
        stars[i].display();
        stars[i].update();
      } // star
-
-
-
     }
   }
 };
 
-
-
-
-
 //=========================
 // Particle SETUP
 //=========================
-// Particle class
-
 
 let Particle = function(position) {
   this.position = position;
