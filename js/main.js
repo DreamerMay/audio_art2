@@ -182,7 +182,7 @@ function draw()
       }
 
       // Threshold art (green)
-      let volThreshold = 0.2;
+      let volThreshold = 0.15;
       if (volMic > volThreshold)
       {
         stroke('#44a8ff');
