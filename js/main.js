@@ -28,7 +28,7 @@ let ellipseWidth = 10;
 
 
 function preload() {
-  song = loadSound('assets/flower-of-life.mp3');
+  song = loadSound('assets/the_depths.mp3');
 }
 
 // Setup starfield
@@ -154,6 +154,7 @@ function draw()
   background(0);
   noStroke();
 
+
   if (mic === undefined )
     {
       return;
@@ -168,7 +169,6 @@ function draw()
       {
         fill(0);
         stroke(0)
-        console.log("rms:",rms);
       } else
       {
         fill(255, 204, 0);
@@ -177,7 +177,6 @@ function draw()
         let eh = map(volMic*5, 0, 1, height, 0);
         ellipse(width/2, eh - 100, 50, 50);
 
-        console.log(volMic);
           $("#microphone").fadeIn("300");
           $("#play").fadeIn("3000");
       }
