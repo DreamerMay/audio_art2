@@ -13,7 +13,7 @@ body {
 .container {
   margin-left: 5em;
   margin-right: 5em;
-  text-align: center;s
+  text-align: center;
 }
 
 h1 {
@@ -51,8 +51,8 @@ h1 {
 
 
 div#audio_canvas {
-  width: 1920px;
-  height: 1120px;
+  width: windowWidth;
+  height: windowHeight;
   position: absolute;
   top: 0;
   left: 0;

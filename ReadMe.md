@@ -2,7 +2,7 @@
 [link to live site](https://www.sherinefoo.com/audio_art2/)
 
 ## Audio Art
-A site that generate visual art show by abstracting data from audio input. User can join the fun by making some loud sound near the mic.
+A site that generates visual art show by abstracting data from the audio input. The User can join the fun by making some loud sound near the mic.
 
 ## Inspiration of this project
 I have a vision of creating a charity project combining music and least fortunate kids to create a music show. As you know music change a person mood, my goal is to help those kids express their feelings through music. Before I can achieve that, this is where the music project starts.
