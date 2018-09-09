@@ -28,7 +28,7 @@ let ellipseWidth = 10;
 
 
 function preload() {
-  song = loadSound('assets/flower-of-life.mp3');
+  song = loadSound('assets/flower-of-life-demo.mp3');
 }
 
 // Setup starfield
@@ -87,8 +87,8 @@ function setup() {
     console.log('mic activate');
 
     if (song.isPlaying()) {
-      song.pause();
-      console.log('pause song');
+        song.pause();
+        console.log('pause song');
 
     } else {
       song.play();
@@ -96,6 +96,10 @@ function setup() {
     }
   })
 
+  // $(window).click(function(){
+  //   console.log("window");
+  //   $("#play").fadeIn("slow");
+  // })
 
   //============================
   // Instantiate the particles
